@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  anydesk-novnc:
+    # Build the image from the Dockerfile in the current directory
+    build: .
+    container_name: anydesk-novnc-server
+    # Map the container's noVNC port (6080) to the host's port (6080)
+    ports:
+      - "6080:6080"
+    # Privileged mode is often required for AnyDesk to access resources
+    privileged: true
+
+    # Mount /dev/shm for shared memory, which improves display performance
+    shm_size: "128m"
+    restart: always
