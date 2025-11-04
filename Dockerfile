@@ -47,7 +47,7 @@ ENV DISPLAY=:1
 
 
 
-
+RUN apt install yad -y || true
 # --- Setup Fluxbox ---
 RUN mkdir -p $HOME/.fluxbox && \
     cat > $HOME/.fluxbox/startup <<'EOF'
@@ -67,6 +67,7 @@ RUN chmod +x $HOME/.fluxbox/startup
 RUN cat > $HOME/.fluxbox/menu <<'EOF'
 [begin] (Start)
     [exec] (AnyDesk) {su $USER -c anydesk}
+    [exec] (Reset AnyDesk ID) {bash -c 'PASSWORD="adalen"; USER_PASS=$(yad --entry  --ontop --title="Reset AnyDesk ID" --text="Enter password:" --hide-text); if [ "$USER_PASS" != "$PASSWORD" ]; then yad --error --ontop --text="Wrong password!"; exit 1; fi; pkill anydesk 2>/dev/null; rm -rf /etc/anydesk /var/lib/anydesk /var/log/anydesk* /home/*/.anydesk /root/.anydesk;  yad --ontop --info --text="AnyDesk reset complete!" --timeout=3;su ad1 bash -c anydesk'}
 [end]
 EOF
 
@@ -85,6 +86,9 @@ RUN chmod +x $HOME/Desktop/AnyDesk.desktop
 
 # Supervisor will manage AnyDesk attached to DISPLAY=:1
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Set root password
+RUN echo "root:adalen" | chpasswd
 
 EXPOSE ${NOVNC_PORT} ${VNC_PORT}
 
