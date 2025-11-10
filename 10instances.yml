@@ -1,0 +1,128 @@
+version: "3.8"
+
+services:
+  anydesk-base: &anydesk_base
+    build: .
+    privileged: true
+    shm_size: "128m"
+    restart: always
+
+  ad1:
+    <<: *anydesk_base
+    container_name: anydesk-ad1
+    ports:
+      - "6081:6080"
+    volumes:
+      - ./data/ad1/etc:/etc/anydesk
+      - ./data/ad1/lib:/var/lib/anydesk
+      - ./data/ad1/log:/var/log/anydesk
+      - ./data/ad1/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad1/root/.anydesk:/root/.anydesk
+
+  ad2:
+    <<: *anydesk_base
+    container_name: anydesk-ad2
+    ports:
+      - "6082:6080"
+    volumes:
+      - ./data/ad2/etc:/etc/anydesk
+      - ./data/ad2/lib:/var/lib/anydesk
+      - ./data/ad2/log:/var/log/anydesk
+      - ./data/ad2/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad2/root/.anydesk:/root/.anydesk
+
+  ad3:
+    <<: *anydesk_base
+    container_name: anydesk-ad3
+    ports:
+      - "6083:6080"
+    volumes:
+      - ./data/ad3/etc:/etc/anydesk
+      - ./data/ad3/lib:/var/lib/anydesk
+      - ./data/ad3/log:/var/log/anydesk
+      - ./data/ad3/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad3/root/.anydesk:/root/.anydesk
+
+  ad4:
+    <<: *anydesk_base
+    container_name: anydesk-ad4
+    ports:
+      - "6084:6080"
+    volumes:
+      - ./data/ad4/etc:/etc/anydesk
+      - ./data/ad4/lib:/var/lib/anydesk
+      - ./data/ad4/log:/var/log/anydesk
+      - ./data/ad4/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad4/root/.anydesk:/root/.anydesk
+
+  ad5:
+    <<: *anydesk_base
+    container_name: anydesk-ad5
+    ports:
+      - "6085:6080"
+    volumes:
+      - ./data/ad5/etc:/etc/anydesk
+      - ./data/ad5/lib:/var/lib/anydesk
+      - ./data/ad5/log:/var/log/anydesk
+      - ./data/ad5/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad5/root/.anydesk:/root/.anydesk
+
+  ad6:
+    <<: *anydesk_base
+    container_name: anydesk-ad6
+    ports:
+      - "6086:6080"
+    volumes:
+      - ./data/ad6/etc:/etc/anydesk
+      - ./data/ad6/lib:/var/lib/anydesk
+      - ./data/ad6/log:/var/log/anydesk
+      - ./data/ad6/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad6/root/.anydesk:/root/.anydesk
+
+  ad7:
+    <<: *anydesk_base
+    container_name: anydesk-ad7
+    ports:
+      - "6087:6080"
+    volumes:
+      - ./data/ad7/etc:/etc/anydesk
+      - ./data/ad7/lib:/var/lib/anydesk
+      - ./data/ad7/log:/var/log/anydesk
+      - ./data/ad7/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad7/root/.anydesk:/root/.anydesk
+
+  ad8:
+    <<: *anydesk_base
+    container_name: anydesk-ad8
+    ports:
+      - "6088:6080"
+    volumes:
+      - ./data/ad8/etc:/etc/anydesk
+      - ./data/ad8/lib:/var/lib/anydesk
+      - ./data/ad8/log:/var/log/anydesk
+      - ./data/ad8/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad8/root/.anydesk:/root/.anydesk
+
+  ad9:
+    <<: *anydesk_base
+    container_name: anydesk-ad9
+    ports:
+      - "6089:6080"
+    volumes:
+      - ./data/ad9/etc:/etc/anydesk
+      - ./data/ad9/lib:/var/lib/anydesk
+      - ./data/ad9/log:/var/log/anydesk
+      - ./data/ad9/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad9/root/.anydesk:/root/.anydesk
+
+  ad10:
+    <<: *anydesk_base
+    container_name: anydesk-ad10
+    ports:
+      - "6090:6080"
+    volumes:
+      - ./data/ad10/etc:/etc/anydesk
+      - ./data/ad10/lib:/var/lib/anydesk
+      - ./data/ad10/log:/var/log/anydesk
+      - ./data/ad10/home/.anydesk:/home/ad1/.anydesk
+      - ./data/ad10/root/.anydesk:/root/.anydesk
